@@ -19,15 +19,6 @@ import freqtrade.vendor.qtpylib.indicators as qtpylib
 # import numpy as np # noqa
 
 class Low_BB(IStrategy):
-    """
-
-    author@: Thorsten
-
-    works on new objectify branch!
-
-    idea:
-        buy after crossing .98 * lower_bb and sell if trailing stop loss is hit
-    """
 
     # Minimal ROI designed for the strategy.
     # This attribute will be overridden if the config file contains "minimal_roi"
@@ -61,15 +52,6 @@ class Low_BB(IStrategy):
         dataframe['macdsignal'] = macd['macdsignal']
         dataframe['macdhist'] = macd['macdhist']
 
-        # dataframe['cci'] = ta.CCI(dataframe)
-        # dataframe['mfi'] = ta.MFI(dataframe)
-        # dataframe['rsi'] = ta.RSI(dataframe, timeperiod=7)
-
-        # dataframe['canbuy'] = np.NaN
-        # dataframe['canbuy2'] = np.NaN
-        # dataframe.loc[dataframe.close.rolling(49).min() <= 1.1 * dataframe.close, 'canbuy'] == 1
-        # dataframe.loc[dataframe.close.rolling(600).max() < 1.2 * dataframe.close, 'canbuy'] = 1
-        # dataframe.loc[dataframe.close.rolling(600).max() * 0.8 >  dataframe.close, 'canbuy2'] = 1
         ##################################################################################
         # required for graphing
         bollinger = qtpylib.bollinger_bands(dataframe['close'], window=20, stds=2)
